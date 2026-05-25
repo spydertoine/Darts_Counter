@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <!-- Empêche le zoom sauvage et force le mode de rendu mobile sur l'iPad -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Compteur de Fléchettes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Conteneur pour les notifications épurées -->
+    <div id="notification-container"></div>
+
+    <div class="app-container">
+        <h1>🎯 Darts Counter</h1>
+        
+        <!-- ÉCRAN 1 : Configuration de la partie -->
+        <div id="setup-screen">
+            <h3>Configuration de la partie</h3>
+            
+            <div id="step-config">
+                <!-- Choix du Nombre de Joueurs -->
+                <div class="setup-group">
+                    <label for="player-count">Nombre de joueurs :</label>
+                    <input type="number" id="player-count" value="2" min="1" max="8" oninput="genererChampsNoms()">
+                </div>
+                
+                <!-- Choix du Mode de Jeu Officiel -->
+                <div class="setup-group">
+                    <label for="game-mode">Mode de jeu :</label>
+                    <select id="game-mode">
+                        <option value="180">180 (Entraînement)</option>
+                        <option value="301">301 (Classique)</option>
+                        <option value="501" selected>501 (Officiel PDC)</option>
+                        <option value="701">701 (Équipe / Long)</option>
+                        <option value="901">901 (Endurance)</option>
+                        <option value="1001">1001 (Match de Gala)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Les champs de texte des prénoms s'injectent ici automatiquement -->
+            <div id="players-names-inputs"></div>
+
+            <button onclick="demarrerPartie()" style="margin-top: 10px;">Lancer la partie</button>
+        </div>
+
+        <!-- ÉCRAN 2 : Le jeu -->
+        <div id="game-screen" style="display: none;">
+            <!-- Les cartes de score s'organisent en grille responsive ici -->
+            <div class="players-container" id="players-grid"></div>
+
+            <!-- Zone de saisie des points -->
+            <div class="input-container">
+                <p class="turn-indicator">Au tour de : <span id="current-player-name">-</span></p>
+                <input type="number" id="points-input" placeholder="Points" min="0" max="180">
+                <button onclick="validerLeTour()">Valider</button>
+                <div style="text-align: center;">
+                    <button onclick="quitterPartie()" class="btn-secondary">Quitter la partie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

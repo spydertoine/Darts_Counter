@@ -1,0 +1,335 @@
+/* ==========================================================================
+   1. POLICES & VARIABLES (Palette Premium iOS Épurée)
+   ========================================================================== */
+   :root {
+    --bg-color: #0b0f19;         /* Fond sombre bleuté */
+    --card-bg: #131a26;          /* Gris-bleu épuré */
+    --card-active: #1e293b;      /* Joueur actif */
+    --accent: #6366f1;           /* Indigo moderne */
+    --text-main: #f8fafc;        /* Blanc cassé */
+    --text-muted: #94a3b8;       /* Gris secondaire */
+    --border-subtle: #334155;    /* Lignes fines */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    letter-spacing: -0.01em;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-align: center;
+}
+
+/* ==========================================================================
+   3. ÉCRAN DE CONFIGURATION & INPUTS
+   ========================================================================== */
+#setup-screen {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+}
+
+#setup-screen h3 {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.setup-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.setup-group label {
+    font-weight: 500;
+}
+
+#player-count {
+    width: 80px;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-color);
+    color: white;
+    text-align: center;
+}
+
+#game-mode {
+    width: 170px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-color);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+#game-mode:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+#players-names-inputs {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 5px;
+}
+
+.name-input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.name-input-group label {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.name-input-group input {
+    width: 70%;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-color);
+    color: white;
+}
+
+.name-input-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* ==========================================================================
+   4. CARTES DE SCORE (GRILLE RESPONSIVE AUTOMATIQUE)
+   ========================================================================== */
+.players-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    width: 100%;
+}
+
+.player-card {
+    background-color: var(--card-bg);
+    padding: 20px 15px;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.player-card h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.score {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-top: 8px;
+}
+
+.player-card.active {
+    background-color: var(--card-active);
+    border-color: #475569;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.player-card.active h2 {
+    color: white;
+    font-weight: 600;
+}
+
+.player-card.active .score {
+    color: var(--accent);
+}
+
+/* ==========================================================================
+   5. INTERFACE DE SAISIE (TOUCHES LISIBLES)
+   ========================================================================== */
+.input-container {
+    background-color: var(--card-bg);
+    padding: 35px 25px;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    text-align: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.turn-indicator {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+#current-player-name {
+    font-weight: 700;
+    color: var(--text-main);
+    background-color: var(--card-active);
+    padding: 6px 14px;
+    border-radius: 8px;
+    margin-left: 5px;
+}
+
+#points-input {
+    width: 100%;
+    max-width: 280px; 
+    padding: 15px;    
+    font-size: 2.8rem; 
+    font-weight: 700;
+    border-radius: 16px;
+    border: 2px solid var(--border-subtle);
+    background-color: var(--bg-color);
+    color: white;
+    text-align: center;
+    margin: 0 auto 25px auto;
+    display: block;
+}
+
+#points-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* ==========================================================================
+   6. BOUTONS
+   ========================================================================== */
+button {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #4f46e5;
+}
+
+.btn-secondary {
+    background-color: transparent !important;
+    color: var(--text-muted) !important;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 10px;
+    margin-top: 20px;
+    width: auto;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    color: white !important;
+}
+
+/* ==========================================================================
+   8. NOTIFICATIONS ÉPURÉES (STYLE MODERN TOAST)
+   ========================================================================== */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    max-width: 400px;
+    pointer-events: none;
+}
+
+.toast {
+    background: rgba(19, 26, 38, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-main);
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: all 0.3s ease;
+}
+
+.toast.success { border-color: rgba(99, 102, 241, 0.4); }
+.toast.error { border-color: rgba(239, 68, 68, 0.4); }
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; transform: translateY(-10px) scale(0.95); }
+}
+
+/* ==========================================================================
+   7. RESPONSIVE COMPACT
+   ========================================================================== */
+@media (max-width: 480px) {
+    .score { font-size: 2.2rem; }
+    .players-container {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 10px;
+    }
+    #points-input { max-width: 100%; font-size: 2.2rem; }
+}
